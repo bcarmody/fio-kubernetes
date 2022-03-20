@@ -1,0 +1,23 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+    name: local
+provisioner: sio
+volumeBindingMode: Immediate
+parameters:
+  Policy: local
+  VolumeType: file
+allowVolumeExpansion: true
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: fio-brian
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi      
+  storageClassName: local
+

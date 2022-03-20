@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: fio
-        image: joshuarobinson/fio:3.19
+        image: briancarmody/fio:3.29
         command: ["sh"]
         args: ["-c", "echo ${HOSTNAME} && mkdir -p /scratch/${HOSTNAME} && fio /configs/fio.job --eta=never --directory=/scratch/${HOSTNAME}"]
         volumeMounts:
@@ -33,16 +33,4 @@ spec:
           name: fio-job-config
       - name: fio-data
         persistentVolumeClaim:
-          claimName: fio-claim
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: fio-claim
-spec:
-  storageClassName: pure-file
-  accessModes:
-  - ReadWriteMany
-  resources:
-    requests:
-      storage: 1Ti
+          claimName: fio-brian

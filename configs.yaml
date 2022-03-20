@@ -11,7 +11,7 @@ data:
     buffered=0
     size=10G
     iodepth=1000
-    numjobs=100
+    numjobs=4
     group_reporting
     refill_buffers
     rwmixread=80
@@ -20,5 +20,5 @@ data:
     percentage_random=0
     bs=512K
     buffer_compress_percentage=50
-    rw=read
+    rw=randrw
     [testjob]
